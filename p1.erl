@@ -30,8 +30,18 @@ permutations([]) -> [[]];
 permutations(N) -> 
     [[H|T] || H <- N , T <- permutations(N -- [H])].
 
-
 %% fibonacci
 fib(0) -> 0;
 fib(1) -> 1;
 fib(N) -> fib(N-1) + fib(N-2).
+
+%% A function f is defined by the rule that f(n)=n if n<3 and f(n)=f(n-1)+2f(n-2)+3f(n-3) if n> 3.
+f(0) -> 0;
+f(1) -> 1;
+f(2) -> 2;
+f(N) -> f(N-1) + (2 * f(N-2)) + (3 *f(N-3)).
+
+%% return nth element of a list
+nth([], _) -> [];
+nth([H|_], 0) -> H;
+nth([_|T], N) -> nth(T, N-1).
